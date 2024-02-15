@@ -33,10 +33,15 @@ def query_sql(cursor, query):
 # Add a new job
 def add_new_job(cursor, jobdetails):
     # extract all required columns
+    job_id = jobdetails ["id"]
+    company = jobdetails["company"]
+    created_at = time.strptime(jobdetails["created_at"], "%a %b %d %H:%M:%S %Z %Y")
+    url = jobdetails["url"]
+    title = jobdetails["title"]
     description = html2text.html2text(jobdetails['description'])
     date = jobdetails['publication_date'][0:10]
-    query = cursor.execute("INSERT INTO jobs( Description, Created_at " ") "
-               "VALUES(%s,%s)", (  description, date))
+    query = cursor.execute("INSERT INTO jobs( Job_id, Company, Created_at, Url, Title, Description) "
+               "VALUES(%s,%s, %s, %s, %s, %s)", (job_id, company, created_at, url, title, description, date))
      # %s is what is needed for Mysqlconnector as SQLite3 uses ? the Mysqlconnector uses %s
     return query_sql(cursor, query)
 
@@ -44,13 +49,16 @@ def add_new_job(cursor, jobdetails):
 # Check if new job
 def check_if_job_exists(cursor, jobdetails):
     ##Add your code here
-    query = "UPDATE"
+    title = jobdetails ["title"]
+    company = jobdetails ["company"]
+    query = "SELECT * FROM jobs WHERE Title = %s AND Company = %s"
     return query_sql(cursor, query)
 
 # Deletes job
 def delete_job(cursor, jobdetails):
     ##Add your code here
-    query = "UPDATE"
+    job_id = jobdetails["id"]
+    query = "DELETE FROM jobs WHERE Job_id = %s"
     return query_sql(cursor, query)
 
 
@@ -79,11 +87,10 @@ def add_or_delete_job(jobpage, cursor):
         is_job_found = len(
         cursor.fetchall()) > 0  # https://stackoverflow.com/questions/2511679/python-number-of-rows-affected-by-cursor-executeselect
         if is_job_found:
-
+            add_new_job(cursor, jobdetails)
+            print("New job added:", jobdetails['description'])
         else:
-            # INSERT JOB
-            # Add in your code here to notify the user of a new posting. This code will notify the new user
-
+            print("Job already exists:", jobdetails['description'])
 
 
 # Setup portion of the program. Take arguments and set up the script
