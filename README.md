@@ -18,9 +18,9 @@ Job Hunter is a Python script that collects remote job postings from the Remotiv
  LAMP stack server
 
 ## Usage
- Clone the repository: https://github.com/AbiyuTamirat2/cne340_jobhunter_Abiyu
- Run the script: jobhunter.py
+~ Clone the repository: https://github.com/AbiyuTamirat2/cne340_jobhunter_Abiyu
+~ Run the script: jobhunter.py
 
 ## Thanks (Reference)
- Thank you to Professor Ixius Procopios for providing the python script.
- Remotive API for providing job listings.
+~ Thank you to Professor Ixius Procopios for providing the python script.
+~ Remotive API for providing job listings.
