@@ -23,5 +23,4 @@ Job Hunter is a Python script that collects remote job postings from the Remotiv
 
 ## Thanks (Reference)
  Thank you to Professor Ixius Procopios for providing the python script.
- 
  Remotive API for providing job listings.
