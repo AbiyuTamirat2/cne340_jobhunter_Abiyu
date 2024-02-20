@@ -11,10 +11,15 @@ Job Hunter is a Python script that collects remote job postings from the Remotiv
 
 ## Prerequisites
  To run Job Hunter, you need the following:
+
  Python 3 
+
  HTML to Text (html2text) library
+
  Requests (requests) library
+
  MySQL Connector (mysql.connector) library
+
  LAMP stack server
 
 ## Usage
