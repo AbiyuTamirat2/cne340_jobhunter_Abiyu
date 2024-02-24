@@ -69,9 +69,9 @@ def delete_job(cursor, job_id):
 # Grab new jobs from a website, Parses JSON code and inserts the data into a list of dictionaries do not need to edit
 def fetch_new_jobs():
     query = requests.get("https://remotive.io/api/remote-jobs")
-    datas = json.loads(query.text)
+    jobs = json.loads(query.text)
 
-    return datas
+    return jobs
 
 
 # Main area of the code. Should not need to edit
